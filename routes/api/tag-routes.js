@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         attributes: ['id', 'product-name', 'price', 'category-id']
       }
     ]
-  }).then(dbTagData => res.json(dbTagData))
+  }).then(dbTag => res.json(dbTag))
 });
 
 router.get('/:id', (req, res) => {
@@ -31,12 +31,12 @@ router.get('/:id', (req, res) => {
         attributes: ['id', 'product-name', 'price', 'category-id']
       }
     ]
-  }).then(dbTagData => res.json(dbTagData)) 
+  }).then(dbTag => res.json(dbTag)) 
 });
 
 router.post('/', (req, res) => {
   // create a new tag
-  Tag.create(req.body).then(dbTagData => res.json(dbTagData))
+  Tag.create(req.body).then(dbTag => res.json(dbTag))
 });
 
 router.put('/:id', (req, res) => {
@@ -45,7 +45,7 @@ router.put('/:id', (req, res) => {
     where: {
       id: req.params.id
     }
-  }).then(dbTagData => res.json(dbTagData))
+  }).then(dbTag => res.json(dbTag))
 });
 
 router.delete('/:id', (req, res) => {
@@ -54,7 +54,7 @@ router.delete('/:id', (req, res) => {
     where: {
       id: req.params.id
     }
-  }).then(dbTagData => (dbTagData))
+  }).then(dbTag => (dbTag))
 });
 
 module.exports = router;
