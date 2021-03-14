@@ -19,7 +19,12 @@ router.get("/", (req, res) => {
         attributes: ["id", "tag_name"],
       },
     ],
-  }).then((dbProduct) => res.json(dbProduct));
+  })
+  .then((dbProductData) => res.json(dbProductData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 // get one product
@@ -41,7 +46,17 @@ router.get("/:id", (req, res) => {
         attributes: ["id", "tag_name"],
       },
     ]
-  }).then(dbProduct => res.json(dbProduct))
+  })
+  .then(dbProductData => {
+    if (!dbProductData) {
+    res.status(404).json({ message: 'No user found with this id' });
+    return;
+    }
+    res.json(dbProductData); })
+    .catch(err => { 
+      console.log(err); 
+      res.status(500).json(err);
+    });
 });
 
 // create new product
@@ -124,7 +139,17 @@ router.delete("/:id", (req, res) => {
     where: {
       id: req.params.id
     }
-  }).then(dbProduct => res.json(dbProductData));
+  })
+  .then(dbProductData => {
+    if (!dbProductData) {
+    res.status(404).json({ message: 'No user found with this id' });
+    return;
+    }
+    res.json(dbProductData); })
+    .catch(err => { 
+      console.log(err); 
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;
