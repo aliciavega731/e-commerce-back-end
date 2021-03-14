@@ -20,11 +20,11 @@ router.get("/", (req, res) => {
       },
     ],
   })
-  .then((dbProductData) => res.json(dbProductData))
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then((dbProductData) => res.json(dbProductData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // get one product
@@ -33,7 +33,7 @@ router.get("/:id", (req, res) => {
   // be sure to include its associated Category and Tag data
   Product.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
     attributes: ["id", "product_name", "price", "stock", "category_id"],
     include: [
@@ -45,16 +45,17 @@ router.get("/:id", (req, res) => {
         model: Tag,
         attributes: ["id", "tag_name"],
       },
-    ]
+    ],
   })
-  .then(dbProductData => {
-    if (!dbProductData) {
-    res.status(404).json({ message: 'No user found with this id' });
-    return;
-    }
-    res.json(dbProductData); })
-    .catch(err => { 
-      console.log(err); 
+    .then((dbProductData) => {
+      if (!dbProductData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbProductData);
+    })
+    .catch((err) => {
+      console.log(err);
       res.status(500).json(err);
     });
 });
@@ -137,17 +138,18 @@ router.delete("/:id", (req, res) => {
   // delete one product by its `id` value
   Product.destroy({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-  .then(dbProductData => {
-    if (!dbProductData) {
-    res.status(404).json({ message: 'No user found with this id' });
-    return;
-    }
-    res.json(dbProductData); })
-    .catch(err => { 
-      console.log(err); 
+    .then((dbProductData) => {
+      if (!dbProductData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbProductData);
+    })
+    .catch((err) => {
+      console.log(err);
       res.status(500).json(err);
     });
 });
