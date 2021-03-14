@@ -6,6 +6,26 @@ For this challenge, we were required to build the back end for an e-commerce sit
 
 ## Application Demo
 
+Schema and Seed Set Up
+![Schema and Seed Set Up](images/Schema-and-Seed-Data.gif)
+
+GET Routes to return all categories
+![GET Routes returns all](images/GET-Categories.gif)
+
+GET Routes to return a single category
+![GET Routes returns single category](images/GET1-Categories.gif)
+
+POST
+![POST Route](images/POST-Categories.gif)
+
+PUT
+![Put Route](images/PUT-Categories.gif)
+
+DELETE
+![Delete Route](images/DELETE-Categories.gif)
+
+Full videos can be found in the VIDEOS folder within IMAGES.
+
 ## User Story
 
 ```md
